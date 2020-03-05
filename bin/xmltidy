@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Clean of XML and strip comments
+which tidy >/dev/null 2>&1
+
+if [ $? ]; then
+  tidy -quiet -asxml -xml -indent -wrap 1024 --hide-comments 1 $*
+else
+  cat $*
+fi
